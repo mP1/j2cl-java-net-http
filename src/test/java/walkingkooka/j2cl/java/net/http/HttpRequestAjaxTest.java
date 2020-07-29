@@ -87,8 +87,7 @@ public final class HttpRequestAjaxTest implements ClassTesting2<HttpRequestAjax>
                         .method(METHOD, PUBLISHER)
                         .header(HEADER, VALUE)
                         .timeout(TIMEOUT)
-                        .version(VERSION)
-                        .expectContinue(true));
+                        .version(VERSION));
     }
 
     @Test
@@ -173,10 +172,15 @@ public final class HttpRequestAjaxTest implements ClassTesting2<HttpRequestAjax>
                        final HttpRequest b) {
         assertEquals(jre.bodyPublisher(), b.bodyPublisher(), "bodyPublisher"); // used instance implements both BodyPublisher interfaces
         assertEquals(jre.expectContinue(), b.expectContinue(), "expectContinue");
-        assertEquals(jre.headers(), b.headers(), "headers");
+        checkHeaders(jre.headers(), b.headers());
         assertEquals(jre.method(), b.method(), "method");
         assertEquals(jre.timeout(), b.timeout(), "timeout");
         assertEquals(jre.version().map(Enum::name).orElse(""), b.version().map(Enum::name).orElse(""), "version");
+    }
+
+    private void checkHeaders(final java.net.http.HttpHeaders jre,
+                              final HttpHeaders headers) {
+        assertEquals(jre.map(), headers.map(), "headers");
     }
 
     // toString.........................................................................................................
@@ -205,7 +209,7 @@ public final class HttpRequestAjaxTest implements ClassTesting2<HttpRequestAjax>
                 .expectContinue(true)
                 .uri(URI)
                 .version(Version.HTTP_2);
-        this.toStringAndCheck(b.build().toString(), "http://example HTTP_2\n" +
+        this.toStringAndCheck(b.build().toString(), "GET http://example HTTP_2\n" +
                 "Content-length: 1234\n" +
                 "Content-type: text/plain\n" +
                 "\n" +

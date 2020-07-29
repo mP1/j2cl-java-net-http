@@ -41,7 +41,7 @@ final class HttpRequestAjax implements HttpRequest {
         return new HttpRequestAjax(bodyPublisher,
                 expectContinue,
                 headers,
-                method,
+                null == method ? "GET" : method, // default METHOD is GET
                 timeout,
                 uri,
                 version);
@@ -129,7 +129,8 @@ final class HttpRequestAjax implements HttpRequest {
 
         b.value(this.headers);
 
-        return b.separator("\n\n")
+        return b.separator("\n")
+                .labelSeparator(": ")
                 .label("expectContinue").value(this.expectContinue)
                 .separator(", ")
                 .label("timeout").value(this.timeout)
