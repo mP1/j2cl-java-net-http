@@ -18,12 +18,12 @@
 package walkingkooka.j2cl.java.net.http;
 
 import java.net.URI;
-import java.net.http.HttpHeaders;
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 import java.time.Duration;
 import java.util.Optional;
 import java.util.concurrent.Flow;
+import java.util.concurrent.Flow.Subscriber;
 
 public interface HttpRequest {
 
@@ -75,7 +75,17 @@ public interface HttpRequest {
         }
 
         public static BodyPublisher noBody() {
-            throw new UnsupportedOperationException();
+            return new BodyPublisher(){
+                @Override
+                public long contentLength() {
+                    return 0;// throw new UnsupportedOperationException();
+                }
+
+                @Override
+                public void subscribe(Subscriber<? super ByteBuffer> subscriber) {
+                    //throw new UnsupportedOperationException();
+                }
+            };
         }
 
         public static BodyPublisher ofByteArray(final byte[] buf) {
@@ -106,11 +116,11 @@ public interface HttpRequest {
     }
 
     static Builder newBuilder() {
-        throw new UnsupportedOperationException();
+        return HttpRequestBuilder.empty();
     }
 
     static Builder newBuilder(final URI uri) {
-        throw new UnsupportedOperationException();
+        return HttpRequestBuilder.empty().uri(uri);
     }
 
     Optional<BodyPublisher> bodyPublisher();
