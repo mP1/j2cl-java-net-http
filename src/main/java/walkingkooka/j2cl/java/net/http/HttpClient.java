@@ -17,17 +17,18 @@
 
 package walkingkooka.j2cl.java.net.http;
 
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 import java.time.Duration;
 import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 
 /**
  * An emulated subset of {@link java.net.http.HttpClient}.
  */
 public abstract class HttpClient {
+
+    protected HttpClient() {
+        super();
+    }
 
     public interface Builder {
         HttpClient build();
@@ -56,28 +57,28 @@ public abstract class HttpClient {
     }
 
     public static Builder newBuilder() {
-        throw new UnsupportedOperationException();
+        return HttpClientBuilder.empty();
     }
 
     public static HttpClient newHttpClient() {
         return newBuilder().build();
     }
 
-    abstract Optional<Duration> connectTimeout();
+    abstract public Optional<Duration> connectTimeout();
 
-    abstract Optional<Executor> executor();
+    abstract public Optional<Executor> executor();
 
-    abstract Redirect followRedirects();
+    abstract public Redirect followRedirects();
 
-    abstract <T> HttpResponse<T> send(final HttpRequest request,
-                                      final HttpResponse.BodyHandler<T> responseBodyHandler);
+    abstract public <T> HttpResponse<T> send(final HttpRequest request,
+                                             final HttpResponse.BodyHandler<T> responseBodyHandler);
 
-    abstract <T> CompletableFuture<HttpResponse<T>> sendAsync(final HttpRequest request,
-                                                              final HttpResponse.BodyHandler<T> responseBodyHandler);
+//    abstract public <T> CompletableFuture<HttpResponse<T>> sendAsync(final HttpRequest request,
+//                                                                     final HttpResponse.BodyHandler<T> responseBodyHandler);
+//
+//    abstract public <T> CompletableFuture<HttpResponse<T>> sendAsync(final HttpRequest request,
+//                                                                     final HttpResponse.BodyHandler<T> responseBodyHandler,
+//                                                                     final HttpResponse.PushPromiseHandler<T> pushPromiseHandler); // TODO eliminate ???
 
-    abstract <T> CompletableFuture<HttpResponse<T>> sendAsync(final HttpRequest request,
-                                                              final HttpResponse.BodyHandler<T> responseBodyHandler,
-                                                              final HttpResponse.PushPromiseHandler<T> pushPromiseHandler); // TODO eliminate ???
-
-    abstract Version version();
+    abstract public Version version();
 }
