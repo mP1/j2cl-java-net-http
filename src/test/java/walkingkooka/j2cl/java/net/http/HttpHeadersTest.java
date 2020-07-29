@@ -141,6 +141,10 @@ public final class HttpHeadersTest implements HashCodeEqualsDefinedTesting2<Http
                 assertEquals(jre.map(),
                         emul.map(),
                         () -> "map of " + source);
+
+                final java.net.http.HttpHeaders jre2 = jre;
+                assertThrows(UnsupportedOperationException.class, () -> jre2.map().put("a", Lists.of("1")));
+                assertThrows(UnsupportedOperationException.class, () -> emul.map().put("a", Lists.of("1")));
             }
         } else {
             emul = null;

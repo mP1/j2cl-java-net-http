@@ -31,8 +31,9 @@ import java.util.Optional;
 import java.util.OptionalLong;
 import java.util.function.BiPredicate;
 
-import static java.lang.String.CASE_INSENSITIVE_ORDER;
-
+/**
+ * An implementation of {@link java.net.http.HttpHeaders}.
+ */
 public final class HttpHeaders {
 
     public static HttpHeaders of(final Map<String, List<String>> source,
@@ -40,7 +41,7 @@ public final class HttpHeaders {
         Objects.requireNonNull(source, "source");
         Objects.requireNonNull(filter, "filter");
 
-        final Map<String, List<String>> nameToValues = Maps.sorted(CASE_INSENSITIVE_ORDER);
+        final Map<String, List<String>> nameToValues = Maps.sorted(String.CASE_INSENSITIVE_ORDER);
 
         for (final Entry<String, List<String>> nameAndValue : source.entrySet()) {
             final String name = nameAndValue.getKey();
@@ -60,7 +61,7 @@ public final class HttpHeaders {
             }
 
             if (false == values.isEmpty()) {
-                if(null != nameToValues.put(name, Lists.readOnly(values))) {
+                if (null != nameToValues.put(name, Lists.readOnly(values))) {
                     throw new IllegalArgumentException("Duplicate eader " + CharSequences.quote(name) + " value is null");
                 }
             }
