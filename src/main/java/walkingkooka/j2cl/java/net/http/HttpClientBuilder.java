@@ -48,34 +48,31 @@ final class HttpClientBuilder implements HttpClient.Builder {
     public HttpClientBuilder connectTimeout(final Duration connectTimeout) {
         Objects.requireNonNull(connectTimeout, "connectTimeout");
 
-        return connectTimeout.equals(this.connectTimeout) ?
-                this :
-                new HttpClientBuilder(connectTimeout, this.executor, this.followRedirects, this.priority, this.version);
+        this.connectTimeout = connectTimeout;
+        return this;
     }
 
-    private final Duration connectTimeout;
+    Duration connectTimeout;
 
     @Override
     public HttpClientBuilder executor(final Executor executor) {
         Objects.requireNonNull(executor, "executor");
 
-        return executor.equals(this.executor) ?
-                this :
-                new HttpClientBuilder(this.connectTimeout, executor, this.followRedirects, this.priority, this.version);
+        this.executor = executor;
+        return this;
     }
 
-    private final Executor executor;
+    Executor executor;
 
     @Override
     public HttpClientBuilder followRedirects(final Redirect followRedirects) {
         Objects.requireNonNull(followRedirects, "followRedirects");
 
-        return followRedirects.equals(this.followRedirects) ?
-                this :
-                new HttpClientBuilder(this.connectTimeout, this.executor, followRedirects, this.priority, this.version);
+        this.followRedirects = followRedirects;
+        return this;
     }
 
-    final Redirect followRedirects;
+    Redirect followRedirects;
 
     @Override
     public HttpClientBuilder priority(final int priority) {
@@ -83,23 +80,21 @@ final class HttpClientBuilder implements HttpClient.Builder {
             throw new IllegalArgumentException("Priority " + priority + " must be between 1 and 256");
         }
 
-        return this.priority == priority ?
-                this :
-                new HttpClientBuilder(this.connectTimeout, this.executor, this.followRedirects, priority, this.version);
+        this.priority = priority;
+        return this;
     }
 
-    final int priority;
+    int priority;
 
     @Override
     public HttpClientBuilder version(final Version version) {
         Objects.requireNonNull(version, "version");
 
-        return version.equals(this.version) ?
-                this :
-                new HttpClientBuilder(this.connectTimeout, this.executor, this.followRedirects, this.priority, version);
+        this.version = version;
+        return this;
     }
 
-    private final Version version;
+    Version version;
 
     @Override
     public HttpClient build() {

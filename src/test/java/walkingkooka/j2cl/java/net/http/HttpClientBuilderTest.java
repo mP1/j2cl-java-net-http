@@ -45,8 +45,9 @@ public final class HttpClientBuilderTest implements ClassTesting2<HttpClientBuil
         final Duration duration = Duration.ofMillis(100);
         java.net.http.HttpClient.newBuilder().connectTimeout(duration);
 
-        HttpClientBuilder.empty()
+        final HttpClientBuilder b = HttpClientBuilder.empty()
                 .connectTimeout(duration);
+        assertSame(duration, b.connectTimeout, "connectTimeout");
     }
 
     @Test
@@ -57,6 +58,18 @@ public final class HttpClientBuilderTest implements ClassTesting2<HttpClientBuil
         final HttpClientBuilder b = HttpClientBuilder.empty()
                 .connectTimeout(duration);
         assertSame(b, b.connectTimeout(duration));
+        assertSame(duration, b.connectTimeout, "connectTimeout");
+    }
+
+    @Test
+    public void testConnectTimeoutDifferent() {
+        final Duration duration = Duration.ofMillis(100);
+        java.net.http.HttpClient.newBuilder().connectTimeout(duration);
+
+        final HttpClientBuilder b = HttpClientBuilder.empty()
+                .connectTimeout(Duration.ofMillis(200));
+        assertSame(b, b.connectTimeout(duration));
+        assertSame(duration, b.connectTimeout, "connectTimeout");
     }
 
     @Test
@@ -71,8 +84,9 @@ public final class HttpClientBuilderTest implements ClassTesting2<HttpClientBuil
         };
         java.net.http.HttpClient.newBuilder().executor(executor);
 
-        HttpClientBuilder.empty()
+        final HttpClientBuilder b = HttpClientBuilder.empty()
                 .executor(executor);
+        assertSame(executor, b.executor, "executor");
     }
 
     @Test
@@ -84,6 +98,7 @@ public final class HttpClientBuilderTest implements ClassTesting2<HttpClientBuil
         final HttpClientBuilder b = HttpClientBuilder.empty()
                 .executor(executor);
         assertSame(b, b.executor(executor));
+        assertSame(executor, b.executor, "executor");
     }
 
     @Test
@@ -96,8 +111,10 @@ public final class HttpClientBuilderTest implements ClassTesting2<HttpClientBuil
     public void testFollowRedirects() {
         java.net.http.HttpClient.newBuilder().followRedirects(java.net.http.HttpClient.Redirect.ALWAYS);
 
-        HttpClientBuilder.empty()
-                .followRedirects(Redirect.ALWAYS);
+        final Redirect followRedirects = Redirect.ALWAYS;
+        final HttpClientBuilder b = HttpClientBuilder.empty()
+                .followRedirects(followRedirects);
+        assertSame(followRedirects, b.followRedirects, "followRedirects");
     }
 
     @Test
@@ -108,6 +125,7 @@ public final class HttpClientBuilderTest implements ClassTesting2<HttpClientBuil
         final HttpClientBuilder b = HttpClientBuilder.empty()
                 .followRedirects(redirect);
         assertSame(b, b.followRedirects(redirect));
+        assertSame(redirect, b.followRedirects, "followRedirects");
     }
 
     @Test
@@ -116,7 +134,9 @@ public final class HttpClientBuilderTest implements ClassTesting2<HttpClientBuil
 
         final HttpClientBuilder b = HttpClientBuilder.empty()
                 .followRedirects(Redirect.ALWAYS);
-        assertNotSame(b, b.followRedirects(Redirect.NORMAL));
+        final Redirect redirect = Redirect.NORMAL;
+        assertSame(b, b.followRedirects(redirect));
+        assertSame(redirect, b.followRedirects, "followRedirects");
     }
 
     @Test
@@ -133,11 +153,14 @@ public final class HttpClientBuilderTest implements ClassTesting2<HttpClientBuil
 
     @Test
     public void testPriority() {
-        for (int i = 1; i <= 256; i++) {
-            java.net.http.HttpClient.newBuilder().priority(i);
+        final java.net.http.HttpClient.Builder jre = java.net.http.HttpClient.newBuilder();
+        final HttpClientBuilder b = HttpClientBuilder.empty();
 
-            HttpClientBuilder.empty()
-                    .priority(i);
+        for (int i = 1; i <= 256; i++) {
+            assertSame(jre, jre.priority(i));
+
+            assertSame(b, b.priority(i));
+            assertEquals(i, b.priority, "priority");
         }
     }
 
@@ -152,17 +175,45 @@ public final class HttpClientBuilderTest implements ClassTesting2<HttpClientBuil
     }
 
     @Test
+    public void testPriorityDifferent() {
+        final int priority = 1;
+
+        final java.net.http.HttpClient.Builder jre = java.net.http.HttpClient.newBuilder();
+        assertSame(jre, jre.priority(priority));
+
+        final HttpClientBuilder b = HttpClientBuilder.empty();
+        assertSame(b, b.priority(priority));
+
+        final int different = 2;
+        assertSame(jre, jre.priority(priority));
+        assertSame(b, b.priority(different));
+        assertEquals(different, b.priority, "priority");
+    }
+
+    @Test
     public void testVersionFails() {
         assertThrows(NullPointerException.class, () -> java.net.http.HttpClient.newBuilder().version(null));
         assertThrows(NullPointerException.class, () -> HttpClientBuilder.empty().version(null));
     }
 
     @Test
-    public void testVersion() {
+    public void testVersionHttp11() {
         java.net.http.HttpClient.newBuilder().version(java.net.http.HttpClient.Version.HTTP_1_1);
 
-        HttpClientBuilder.empty()
-                .version(Version.HTTP_1_1);
+        final Version version = Version.HTTP_1_1;
+        final HttpClientBuilder b = HttpClientBuilder.empty()
+                .version(version);
+        assertSame(version, b.version, "version");
+    }
+
+    @Test
+    public void testVersionHttp2() {
+        java.net.http.HttpClient.newBuilder().version(java.net.http.HttpClient.Version.HTTP_2);
+
+        final Version version = Version.HTTP_2;
+        final HttpClientBuilder b = HttpClientBuilder.empty()
+                .version(version);
+        assertSame(version, b.version, "version");
     }
 
     @Test
@@ -173,15 +224,18 @@ public final class HttpClientBuilderTest implements ClassTesting2<HttpClientBuil
         final HttpClientBuilder b = HttpClientBuilder.empty()
                 .version(version);
         assertSame(b, b.version(version));
+        assertSame(version, b.version, "version");
     }
 
     @Test
-    public void testVersionDifferent() {
+    public void testFollowVersionDifferent() {
         java.net.http.HttpClient.newBuilder().version(java.net.http.HttpClient.Version.HTTP_1_1);
 
         final HttpClientBuilder b = HttpClientBuilder.empty()
-                .version(Version.HTTP_1_1);
-        assertNotSame(b, b.version(Version.HTTP_2));
+                .version(Version.HTTP_2);
+        final Version version = Version.HTTP_2;
+        assertSame(b, b.version(version));
+        assertSame(version, b.version, "version");
     }
 
     // buildAndCheck............................................................................................................
