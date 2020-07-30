@@ -40,7 +40,7 @@ public interface HttpResponse<T> {
         BodySubscriber<T> apply(final ResponseInfo responseInfo);
     }
 
-    class BodyHandlers {
+    public class BodyHandlers {
         public static <T> BodyHandler<T> buffering(final BodyHandler<T> handler,
                                                    final int bufferSize) {
             throw new UnsupportedOperationException();
@@ -106,7 +106,7 @@ public interface HttpResponse<T> {
         CompletionStage<T> getBody();
     }
 
-    class BodySubscribers {
+    public class BodySubscribers {
 
         public static <T> BodySubscriber<T> buffering(final BodySubscriber<T> downstream,
                                                       final int bufferSize) {
