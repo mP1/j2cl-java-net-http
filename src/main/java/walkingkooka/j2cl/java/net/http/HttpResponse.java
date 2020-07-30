@@ -69,21 +69,21 @@ public interface HttpResponse<T> {
             throw new UnsupportedOperationException();
         }
 
-        public static BodyHandler<byte[]> ofByteArray() {
-            throw new UnsupportedOperationException();
-        }
-
-        public static BodyHandler<Void> ofByteArrayConsumer(final Consumer<Optional<byte[]>> consumer) {
-            throw new UnsupportedOperationException();
-        }
+//        public static BodyHandler<byte[]> ofByteArray() {
+//            throw new UnsupportedOperationException();
+//        }
+//
+//        public static BodyHandler<Void> ofByteArrayConsumer(final Consumer<Optional<byte[]>> consumer) {
+//            throw new UnsupportedOperationException();
+//        }
 
         public static BodyHandler<Stream<String>> ofLines() {
             throw new UnsupportedOperationException();
         }
 
-        public static BodyHandler<Flow.Publisher<List<ByteBuffer>>> ofPublisher() {
-            throw new UnsupportedOperationException();
-        }
+//        public static BodyHandler<Flow.Publisher<List<ByteBuffer>>> ofPublisher() {
+//            throw new UnsupportedOperationException();
+//        }
 
         public static BodyHandler<String> ofString() {
             throw new UnsupportedOperationException();
@@ -147,26 +147,25 @@ public interface HttpResponse<T> {
             throw new UnsupportedOperationException();
         }
 
-
-        public static BodySubscriber<byte[]> ofByteArray() {
-            throw new UnsupportedOperationException();
-        }
-
-        public static BodySubscriber<Void> ofByteArrayConsumer(final Consumer<Optional<byte[]>> consumer) {
-            throw new UnsupportedOperationException();
-        }
-
-        public static BodySubscriber<InputStream> ofInputStream() {
-            throw new UnsupportedOperationException();
-        }
+//        public static BodySubscriber<byte[]> ofByteArray() {
+//            throw new UnsupportedOperationException();
+//        }
+//
+//        public static BodySubscriber<Void> ofByteArrayConsumer(final Consumer<Optional<byte[]>> consumer) {
+//            throw new UnsupportedOperationException();
+//        }
+//
+//        public static BodySubscriber<InputStream> ofInputStream() {
+//            throw new UnsupportedOperationException();
+//        }
 
         public static BodySubscriber<Stream<String>> ofLines(final Charset charset) {
             throw new UnsupportedOperationException();
         }
 
-        public static BodySubscriber<Publisher<List<ByteBuffer>>> ofPublisher() {
-            throw new UnsupportedOperationException();
-        }
+//        public static BodySubscriber<Publisher<List<ByteBuffer>>> ofPublisher() {
+//            throw new UnsupportedOperationException();
+//        }
 
         public static BodySubscriber<String> ofString(final Charset charset) {
             Objects.requireNonNull(charset);
