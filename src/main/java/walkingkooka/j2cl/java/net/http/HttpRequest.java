@@ -64,51 +64,43 @@ public interface HttpRequest {
         long contentLength();
     }
 
-    class BodyPublishers {
-        public static BodyPublisher fromPublisher(final Flow.Publisher<? extends ByteBuffer> publisher) {
-            throw new UnsupportedOperationException();
-        }
-
-        public static BodyPublisher fromPublisher(final Flow.Publisher<? extends ByteBuffer> publisher,
-                                                  final long contentLength) {
-            throw new UnsupportedOperationException();
-        }
+    final class BodyPublishers {
+//        public static BodyPublisher fromPublisher(final Flow.Publisher<? extends ByteBuffer> publisher) {
+//            throw new UnsupportedOperationException();
+//        }
+//
+//        public static BodyPublisher fromPublisher(final Flow.Publisher<? extends ByteBuffer> publisher,
+//                                                  final long contentLength) {
+//            throw new UnsupportedOperationException();
+//        }
 
         public static BodyPublisher noBody() {
-            return new BodyPublisher(){
-                @Override
-                public long contentLength() {
-                    return 0;// throw new UnsupportedOperationException();
-                }
-
-                @Override
-                public void subscribe(Subscriber<? super ByteBuffer> subscriber) {
-                    //throw new UnsupportedOperationException();
-                }
-            };
+            return HttpRequestPublishersBodyPublisher.noBody();
         }
 
-        public static BodyPublisher ofByteArray(final byte[] buf) {
-            throw new UnsupportedOperationException();
-        }
-
-        public static BodyPublisher ofByteArray(final byte[] buf,
-                                                final int offset,
-                                                final int length) {
-            throw new UnsupportedOperationException();
-        }
-
-        public static BodyPublisher ofByteArrays(final Iterable<byte[]> iter) {
-            throw new UnsupportedOperationException();
-        }
+//        public static BodyPublisher ofByteArray(final byte[] buf) {
+//            return ofByteArray(buf, 0, buf.length);
+//        }
+//
+//        public static BodyPublisher ofByteArray(final byte[] buf,
+//                                                final int offset,
+//                                                final int length) {
+//            throw new UnsupportedOperationException();
+//        }
+//
+//        public static BodyPublisher ofByteArrays(final Iterable<byte[]> iter) {
+//            throw new UnsupportedOperationException();
+//        }
 
         public static BodyPublisher ofString(final String s) {
-            throw new UnsupportedOperationException();
+            return HttpRequestPublishersBodyPublisher.stringBody(s, UTF8);
         }
+
+        private final static Charset UTF8 = Charset.forName("UTF-8");
 
         public static BodyPublisher ofString(final String s,
                                              final Charset charset) {
-            throw new UnsupportedOperationException();
+            return HttpRequestPublishersBodyPublisher.stringBody(s, charset);
         }
 
         private BodyPublishers() {
