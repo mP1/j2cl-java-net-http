@@ -174,27 +174,23 @@ public final class HttpRequestBodyPublishersTest implements ClassTesting<BodyPub
                 events.add("onSubscribe");
 
                 subscription.request(1);
-                Thread.dumpStack();
             }
 
             @Override
             public void onNext(final ByteBuffer onNext) {
                 events.add("onNext");
                 events.add(new String(onNext.array(), Charset.defaultCharset()));
-                Thread.dumpStack();
             }
 
             @Override
             public void onError(final Throwable throwable) {
                 events.add("onError");
                 events.add(throwable.getClass().getSimpleName() + "=" + throwable.getMessage());
-                Thread.dumpStack();
             }
 
             @Override
             public void onComplete() {
                 events.add("onComplete");
-                Thread.dumpStack();
             }
 
             @Override
