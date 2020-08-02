@@ -25,9 +25,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CompletionStage;
 import java.util.concurrent.Flow;
-import java.util.concurrent.Flow.Subscriber;
-import java.util.function.Function;
-import java.util.stream.Stream;
 
 public interface HttpResponse<T> {
 
@@ -37,34 +34,34 @@ public interface HttpResponse<T> {
     }
 
     public class BodyHandlers {
-        public static <T> BodyHandler<T> buffering(final BodyHandler<T> handler,
-                                                   final int bufferSize) {
-            throw new UnsupportedOperationException();
-        }
+//        public static <T> BodyHandler<T> buffering(final BodyHandler<T> handler,
+//                                                   final int bufferSize) {
+//            throw new UnsupportedOperationException();
+//        }
 
         public static BodyHandler<Void> discarding() {
-            throw new UnsupportedOperationException();
+            return HttpResponseBodyHandler.discarding();
         }
 
-        public static BodyHandler<Void> fromSubscriber(final Subscriber<? super List<ByteBuffer>> subscriber) {
-            throw new UnsupportedOperationException();
-        }
-
-        public static <S extends Subscriber<? super List<ByteBuffer>>, T> BodyHandler<T> fromSubscriber(final S subscriber,
-                                                                                                        final Function<? super S, ? extends T> finisher) {
-            throw new UnsupportedOperationException();
-        }
-
-        public static BodyHandler<Void> fromLineSubscriber(Subscriber<? super String> subscriber) {
-            throw new UnsupportedOperationException();
-        }
-
-        public static <S extends Subscriber<? super String>, T> BodyHandler<T> fromLineSubscriber(final S subscriber,
-                                                                                                  final Function<? super S, ? extends T> finisher,
-                                                                                                  final String lineSeparator) {
-            throw new UnsupportedOperationException();
-        }
-
+//        public static BodyHandler<Void> fromSubscriber(final Subscriber<? super List<ByteBuffer>> subscriber) {
+//            throw new UnsupportedOperationException();
+//        }
+//
+//        public static <S extends Subscriber<? super List<ByteBuffer>>, T> BodyHandler<T> fromSubscriber(final S subscriber,
+//                                                                                                        final Function<? super S, ? extends T> finisher) {
+//            throw new UnsupportedOperationException();
+//        }
+//
+//        public static BodyHandler<Void> fromLineSubscriber(Subscriber<? super String> subscriber) {
+//            throw new UnsupportedOperationException();
+//        }
+//
+//        public static <S extends Subscriber<? super String>, T> BodyHandler<T> fromLineSubscriber(final S subscriber,
+//                                                                                                  final Function<? super S, ? extends T> finisher,
+//                                                                                                  final String lineSeparator) {
+//            throw new UnsupportedOperationException();
+//        }
+//
 //        public static BodyHandler<byte[]> ofByteArray() {
 //            throw new UnsupportedOperationException();
 //        }
@@ -72,26 +69,28 @@ public interface HttpResponse<T> {
 //        public static BodyHandler<Void> ofByteArrayConsumer(final Consumer<Optional<byte[]>> consumer) {
 //            throw new UnsupportedOperationException();
 //        }
-
-        public static BodyHandler<Stream<String>> ofLines() {
-            throw new UnsupportedOperationException();
-        }
-
+//
+//        public static BodyHandler<Stream<String>> ofLines() {
+//            throw new UnsupportedOperationException();
+//        }
+//
 //        public static BodyHandler<Flow.Publisher<List<ByteBuffer>>> ofPublisher() {
 //            throw new UnsupportedOperationException();
 //        }
 
         public static BodyHandler<String> ofString() {
-            throw new UnsupportedOperationException();
+            return ofString(UTF8);
         }
+
+        private final static Charset UTF8 = Charset.forName("UTF-8");
 
         public static BodyHandler<String> ofString(final Charset charset) {
-            throw new UnsupportedOperationException();
+            return HttpResponseBodyHandler.ofString(charset);
         }
-
-        public static <U> BodyHandler<U> replacing(final U value) {
-            throw new UnsupportedOperationException();
-        }
+//
+//        public static <U> BodyHandler<U> replacing(final U value) {
+//            throw new UnsupportedOperationException();
+//        }
 
         private BodyHandlers() {
         }
