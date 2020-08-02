@@ -97,11 +97,6 @@ public final class HttpResponseBodySubscriberStringTest extends HttpResponseBody
     }
 
     @Override
-    HttpResponseBodySubscriberString createSubscriber() {
-        return HttpResponseBodySubscriberString.with(UTF8);
-    }
-
-    @Override
     public Class<HttpResponseBodySubscriberString> type() {
         return HttpResponseBodySubscriberString.class;
     }

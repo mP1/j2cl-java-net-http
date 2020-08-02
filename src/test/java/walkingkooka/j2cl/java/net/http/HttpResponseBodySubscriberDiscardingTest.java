@@ -90,11 +90,6 @@ public final class HttpResponseBodySubscriberDiscardingTest extends HttpResponse
     }
 
     @Override
-    HttpResponseBodySubscriberDiscarding createSubscriber() {
-        return HttpResponseBodySubscriberDiscarding.with();
-    }
-
-    @Override
     public Class<HttpResponseBodySubscriberDiscarding> type() {
         return HttpResponseBodySubscriberDiscarding.class;
     }
