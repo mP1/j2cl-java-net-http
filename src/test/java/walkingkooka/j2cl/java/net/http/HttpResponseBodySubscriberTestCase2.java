@@ -39,8 +39,6 @@ public abstract class HttpResponseBodySubscriberTestCase2<S extends HttpResponse
         super();
     }
 
-    abstract S createSubscriber();
-
     // helpers..........................................................................................................
 
     final static <T> Subscription subscription(final Subscriber<T> subscriber) {
