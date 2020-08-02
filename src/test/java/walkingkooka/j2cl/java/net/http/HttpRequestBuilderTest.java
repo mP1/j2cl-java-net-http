@@ -19,8 +19,6 @@ package walkingkooka.j2cl.java.net.http;
 
 import org.junit.jupiter.api.Test;
 import walkingkooka.ToStringTesting;
-import walkingkooka.collect.list.Lists;
-import walkingkooka.collect.map.Maps;
 import walkingkooka.j2cl.java.net.http.HttpClient.Version;
 import walkingkooka.j2cl.java.net.http.HttpRequest.BodyPublisher;
 import walkingkooka.reflect.ClassTesting2;
