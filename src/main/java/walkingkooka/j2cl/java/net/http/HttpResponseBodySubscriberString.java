@@ -45,5 +45,6 @@ final class HttpResponseBodySubscriberString extends HttpResponseBodySubscriber<
     @Override
     void onBody(final String body) {
         this.value = body;
+        assert !body.isEmpty() : "Body is empty";
     }
 }

@@ -164,7 +164,7 @@
                     </dependency>
                 </dependencies>
                 <configuration>
-                    <enableAssertions>true</enableAssertions>
+                    <enableAssertions>false</enableAssertions>
                     <trimStackTrace>false</trimStackTrace>
                     <useFile>false</useFile>
                 </configuration>
