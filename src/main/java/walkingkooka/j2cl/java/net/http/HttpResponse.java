@@ -168,6 +168,9 @@ public interface HttpResponse<T> {
 //        public static <U> BodySubscriber<U> replacing(final U value) {
 //            throw new UnsupportedOperationException();
 //        }
+
+        private BodySubscribers() {
+        }
     }
 
     interface ResponseInfo {
