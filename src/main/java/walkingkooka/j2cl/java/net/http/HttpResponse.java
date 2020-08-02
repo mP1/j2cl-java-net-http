@@ -17,19 +17,15 @@
 
 package walkingkooka.j2cl.java.net.http;
 
-import java.io.InputStream;
 import java.net.URI;
 import java.net.http.HttpHeaders;
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.CompletionStage;
 import java.util.concurrent.Flow;
-import java.util.concurrent.Flow.Publisher;
 import java.util.concurrent.Flow.Subscriber;
-import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.stream.Stream;
 

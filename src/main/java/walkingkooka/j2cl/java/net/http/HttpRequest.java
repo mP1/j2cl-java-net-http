@@ -23,7 +23,6 @@ import java.nio.charset.Charset;
 import java.time.Duration;
 import java.util.Optional;
 import java.util.concurrent.Flow;
-import java.util.concurrent.Flow.Subscriber;
 
 public interface HttpRequest {
 
