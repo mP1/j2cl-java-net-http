@@ -113,40 +113,38 @@ public interface HttpResponse<T> {
             if (bufferSize <= 0) {
                 throw new IllegalArgumentException("buffersize " + bufferSize + " must be greater than 0");
             }
-            throw new UnsupportedOperationException();
+            return downstream;
         }
 
         public static BodySubscriber<Void> discarding() {
-            throw new UnsupportedOperationException();
+            return HttpResponseBodySubscriber.discarding();
         }
 
-
-        public static BodySubscriber<Void> fromSubscriber(final Subscriber<? super List<ByteBuffer>> subscriber) {
-            throw new UnsupportedOperationException();
-        }
-
-        public static <S extends Subscriber<? super List<ByteBuffer>>, T> BodySubscriber<T> fromSubscriber(final S subscriber,
-                                                                                                           final Function<? super S, ? extends T> finisher) {
-            throw new UnsupportedOperationException();
-        }
-
-        public static BodySubscriber<Void> fromLineSubscriber(final Subscriber<? super String> subscriber) {
-            throw new UnsupportedOperationException();
-        }
-
-        public static <S extends Subscriber<? super String>, T> BodySubscriber<T> fromLineSubscriber(final S subscriber,
-                                                                                                     final Function<? super S, ? extends T> finisher,
-                                                                                                     final Charset charset,
-                                                                                                     final String lineSeparator) {
-            throw new UnsupportedOperationException();
-        }
-
-
-        public static <T, U> BodySubscriber<U> mapping(final BodySubscriber<T> upstream,
-                                                       final Function<? super T, ? extends U> mapper) {
-            throw new UnsupportedOperationException();
-        }
-
+//        public static BodySubscriber<Void> fromSubscriber(final Subscriber<? super List<ByteBuffer>> subscriber) {
+//            throw new UnsupportedOperationException();
+//        }
+//
+//        public static <S extends Subscriber<? super List<ByteBuffer>>, T> BodySubscriber<T> fromSubscriber(final S subscriber,
+//                                                                                                           final Function<? super S, ? extends T> finisher) {
+//            throw new UnsupportedOperationException();
+//        }
+//
+//        public static BodySubscriber<Void> fromLineSubscriber(final Subscriber<? super String> subscriber) {
+//            throw new UnsupportedOperationException();
+//        }
+//
+//        public static <S extends Subscriber<? super String>, T> BodySubscriber<T> fromLineSubscriber(final S subscriber,
+//                                                                                                     final Function<? super S, ? extends T> finisher,
+//                                                                                                     final Charset charset,
+//                                                                                                     final String lineSeparator) {
+//            throw new UnsupportedOperationException();
+//        }
+//
+//        public static <T, U> BodySubscriber<U> mapping(final BodySubscriber<T> upstream,
+//                                                       final Function<? super T, ? extends U> mapper) {
+//            throw new UnsupportedOperationException();
+//        }
+//
 //        public static BodySubscriber<byte[]> ofByteArray() {
 //            throw new UnsupportedOperationException();
 //        }
@@ -158,24 +156,22 @@ public interface HttpResponse<T> {
 //        public static BodySubscriber<InputStream> ofInputStream() {
 //            throw new UnsupportedOperationException();
 //        }
-
-        public static BodySubscriber<Stream<String>> ofLines(final Charset charset) {
-            throw new UnsupportedOperationException();
-        }
-
+//
+//        public static BodySubscriber<Stream<String>> ofLines(final Charset charset) {
+//            throw new UnsupportedOperationException();
+//        }
+//
 //        public static BodySubscriber<Publisher<List<ByteBuffer>>> ofPublisher() {
 //            throw new UnsupportedOperationException();
 //        }
 
         public static BodySubscriber<String> ofString(final Charset charset) {
-            Objects.requireNonNull(charset);
-            throw new UnsupportedOperationException();
+            return HttpResponseBodySubscriber.ofString(charset);
         }
 
-        public static <U> BodySubscriber<U> replacing(final U value) {
-            throw new UnsupportedOperationException();
-        }
-
+//        public static <U> BodySubscriber<U> replacing(final U value) {
+//            throw new UnsupportedOperationException();
+//        }
     }
 
     interface ResponseInfo {
