@@ -54,7 +54,20 @@ All methods emulated
 
 ### HttpResponse.BodySubscribers
 
-- [TODO](https://github.com/mP1/j2cl-java-net-http/issues/15)
+Only buffering, discarding, ofString are implemented.
+
+- fromSubscriber(Subscriber);
+- fromSubscriber(Subscriber,final Function<Subscriber, ? extends T>);
+- fromLineSubscriber(Subscriber);
+- fromLineSubscriber(Subscriber, Function<Subscriber, T, Charset, String);
+- mapping(BodySubscriber<T>, Function<T, U> mapper)
+- ofByteArray()
+- ofByteArrayConsumer(Consumer<Optional<byte[]>)
+- ofInputStream()
+- ofLines(Charset)
+- ofPublisher()
+- replacing(?)
+
 
 
 ## Getting the source
