@@ -17,13 +17,10 @@
 
 package walkingkooka.j2cl.java.net.http;
 
-import walkingkooka.reflect.ClassTesting2;
-import walkingkooka.reflect.JavaVisibility;
-
-public final class HttpRequestTest extends JavaNetHttpTestCase<HttpRequest> {
+public final class HttpResponseTest extends JavaNetHttpTestCase<HttpResponse> {
 
     @Override
-    public Class<HttpRequest> type() {
-        return HttpRequest.class;
+    public Class<HttpResponse> type() {
+        return HttpResponse.class;
     }
 }

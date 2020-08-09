@@ -21,7 +21,6 @@ import org.junit.jupiter.api.Test;
 import walkingkooka.collect.list.Lists;
 import walkingkooka.j2cl.java.net.http.HttpRequest.BodyPublisher;
 import walkingkooka.j2cl.java.net.http.HttpRequest.BodyPublishers;
-import walkingkooka.reflect.ClassTesting;
 import walkingkooka.reflect.JavaVisibility;
 
 import java.nio.ByteBuffer;
@@ -34,10 +33,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public final class HttpRequestBodyPublishersTest implements ClassTesting<BodyPublishers> {
+public final class HttpRequestBodyPublishersTest extends JavaNetHttpTestCase<BodyPublishers> {
 
     @Override
     public void testTestNaming() {
+        // ignore
+    }
+
+    @Override
+    public void testClassFinal() {
         // ignore
     }
 
