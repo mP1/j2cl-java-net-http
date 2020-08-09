@@ -35,8 +35,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public final class HttpHeadersTest implements HashCodeEqualsDefinedTesting2<HttpHeaders>,
-        ClassTesting2<HttpHeaders>,
+public final class HttpHeadersTest extends JavaNetHttpTestCase<HttpHeaders>
+        implements HashCodeEqualsDefinedTesting2<HttpHeaders>,
         ToStringTesting<HttpHeaders> {
 
     private final static String HEADER = "Header1";
