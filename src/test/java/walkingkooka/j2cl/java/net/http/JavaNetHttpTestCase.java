@@ -19,7 +19,6 @@ package walkingkooka.j2cl.java.net.http;
 
 import walkingkooka.javashader.ShadedClassTesting;
 import walkingkooka.predicate.Predicates;
-import walkingkooka.reflect.J2clShadedClassTesting;
 import walkingkooka.reflect.PackageName;
 
 import java.lang.reflect.Constructor;
