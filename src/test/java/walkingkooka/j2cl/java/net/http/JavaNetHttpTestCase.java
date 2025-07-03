@@ -53,6 +53,6 @@ public abstract class JavaNetHttpTestCase<T> implements ShadedClassTesting<T> {
     @Override
     public final UnaryOperator<Class<?>> typeMapper() {
         return ShadedClassTesting.typeMapper(PackageName.from(this.type().getPackage()),
-                PackageName.from(java.net.http.HttpClient.class.getPackage()));
+            PackageName.from(java.net.http.HttpClient.class.getPackage()));
     }
 }

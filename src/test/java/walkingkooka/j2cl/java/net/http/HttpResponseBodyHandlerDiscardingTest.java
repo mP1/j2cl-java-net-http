@@ -31,22 +31,22 @@ public final class HttpResponseBodyHandlerDiscardingTest extends HttpResponseBod
     public final void testApplyResponseInfo() {
         final HttpResponseBodyHandlerDiscarding handler = HttpResponseBodyHandlerDiscarding.INSTANCE;
         assertEquals(HttpResponseBodySubscriberDiscarding.class,
-                handler.apply(new ResponseInfo() {
-                    @Override
-                    public HttpHeaders headers() {
-                        throw new UnsupportedOperationException();
-                    }
+            handler.apply(new ResponseInfo() {
+                @Override
+                public HttpHeaders headers() {
+                    throw new UnsupportedOperationException();
+                }
 
-                    @Override
-                    public int statusCode() {
-                        throw new UnsupportedOperationException();
-                    }
+                @Override
+                public int statusCode() {
+                    throw new UnsupportedOperationException();
+                }
 
-                    @Override
-                    public Version version() {
-                        throw new UnsupportedOperationException();
-                    }
-                }).getClass());
+                @Override
+                public Version version() {
+                    throw new UnsupportedOperationException();
+                }
+            }).getClass());
     }
 
     @Test

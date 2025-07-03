@@ -37,22 +37,22 @@ public final class HttpResponseBodyHandlerStringTest extends HttpResponseBodyHan
     public final void testApplyResponseInfo() {
         final HttpResponseBodyHandlerString handler = HttpResponseBodyHandlerString.with(UTF8);
         assertEquals(HttpResponseBodySubscriberString.class,
-                handler.apply(new ResponseInfo() {
-                    @Override
-                    public HttpHeaders headers() {
-                        throw new UnsupportedOperationException();
-                    }
+            handler.apply(new ResponseInfo() {
+                @Override
+                public HttpHeaders headers() {
+                    throw new UnsupportedOperationException();
+                }
 
-                    @Override
-                    public int statusCode() {
-                        throw new UnsupportedOperationException();
-                    }
+                @Override
+                public int statusCode() {
+                    throw new UnsupportedOperationException();
+                }
 
-                    @Override
-                    public Version version() {
-                        throw new UnsupportedOperationException();
-                    }
-                }).getClass());
+                @Override
+                public Version version() {
+                    throw new UnsupportedOperationException();
+                }
+            }).getClass());
     }
 
     @Test

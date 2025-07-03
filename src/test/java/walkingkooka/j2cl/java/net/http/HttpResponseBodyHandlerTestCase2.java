@@ -26,7 +26,7 @@ import java.nio.charset.StandardCharsets;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public abstract class HttpResponseBodyHandlerTestCase2<S extends HttpResponseBodyHandler<T>, T> extends HttpResponseBodyHandlerTestCase<S, T>
-        implements ToStringTesting<S> {
+    implements ToStringTesting<S> {
 
     final static Charset UTF8 = StandardCharsets.UTF_8;
 

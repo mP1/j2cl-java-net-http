@@ -99,8 +99,8 @@ final class HttpClientBuilder implements HttpClient.Builder {
     @Override
     public HttpClient build() {
         return HttpClientAjax.with(this.connectTimeout,
-                this.executor,
-                this.followRedirects,
-                this.version);
+            this.executor,
+            this.followRedirects,
+            this.version);
     }
 }

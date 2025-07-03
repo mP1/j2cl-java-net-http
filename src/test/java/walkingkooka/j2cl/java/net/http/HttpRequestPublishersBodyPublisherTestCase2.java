@@ -21,7 +21,7 @@ import org.junit.jupiter.api.Test;
 import walkingkooka.ToStringTesting;
 
 public abstract class HttpRequestPublishersBodyPublisherTestCase2<P extends HttpRequestPublishersBodyPublisher> extends HttpRequestPublishersBodyPublisherTestCase<P>
-        implements ToStringTesting<P> {
+    implements ToStringTesting<P> {
 
     HttpRequestPublishersBodyPublisherTestCase2() {
         super();

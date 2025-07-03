@@ -27,7 +27,7 @@ public final class HttpResponseBodySubscribersTest implements ClassTesting2<Http
     public void testTestNaming() {
         // ignore
     }
-    
+
     @Override
     public Class<BodySubscribers> type() {
         return BodySubscribers.class;

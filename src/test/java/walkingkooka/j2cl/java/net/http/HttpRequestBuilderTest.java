@@ -35,7 +35,7 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class HttpRequestBuilderTest implements ClassTesting2<HttpRequestBuilder>,
-        ToStringTesting<HttpRequestBuilder> {
+    ToStringTesting<HttpRequestBuilder> {
 
     private final static URI URI = java.net.URI.create("http://example");
 
@@ -79,10 +79,10 @@ public class HttpRequestBuilderTest implements ClassTesting2<HttpRequestBuilder>
         final Version version = Version.HTTP_1_1;
 
         final HttpRequestBuilder b = HttpRequestBuilder.empty()
-                .expectContinue(expect)
-                .method(method, PUBLISHER)
-                .timeout(timeout)
-                .version(version);
+            .expectContinue(expect)
+            .method(method, PUBLISHER)
+            .timeout(timeout)
+            .version(version);
         final HttpRequestBuilder copy = b.copy();
         assertNotSame(b, copy);
 
@@ -157,7 +157,7 @@ public class HttpRequestBuilderTest implements ClassTesting2<HttpRequestBuilder>
         java.net.http.HttpRequest.newBuilder().expectContinue(expect);
 
         final HttpRequestBuilder b = HttpRequestBuilder.empty()
-                .expectContinue(expect);
+            .expectContinue(expect);
         assertSame(b, b.expectContinue(expect));
     }
 
@@ -183,7 +183,7 @@ public class HttpRequestBuilderTest implements ClassTesting2<HttpRequestBuilder>
         java.net.http.HttpRequest.newBuilder().timeout(duration);
 
         final HttpRequestBuilder b = HttpRequestBuilder.empty()
-                .timeout(duration);
+            .timeout(duration);
         assertSame(b, b.timeout(duration));
     }
 
@@ -209,7 +209,7 @@ public class HttpRequestBuilderTest implements ClassTesting2<HttpRequestBuilder>
         java.net.http.HttpRequest.newBuilder().version(java.net.http.HttpClient.Version.valueOf(version.name()));
 
         final HttpRequestBuilder b = HttpRequestBuilder.empty()
-                .version(version);
+            .version(version);
         assertSame(b, b.version(version));
     }
 
@@ -238,10 +238,10 @@ public class HttpRequestBuilderTest implements ClassTesting2<HttpRequestBuilder>
         final String value = "value2";
 
         final java.net.http.HttpRequest request = java.net.http.HttpRequest.newBuilder(URI)
-                .header(name, value)
-                .build();
+            .header(name, value)
+            .build();
         final HttpRequestBuilder b = HttpRequestBuilder.empty()
-                .header(name, value);
+            .header(name, value);
         assertEquals(request.headers().map(), b.headers);
     }
 
@@ -251,10 +251,10 @@ public class HttpRequestBuilderTest implements ClassTesting2<HttpRequestBuilder>
         final String value = "value2";
 
         final java.net.http.HttpRequest request = java.net.http.HttpRequest.newBuilder(URI)
-                .header(name, value)
-                .build();
+            .header(name, value)
+            .build();
         final HttpRequestBuilder b = HttpRequestBuilder.empty()
-                .header(name, value);
+            .header(name, value);
         assertEquals(request.headers().map(), b.headers);
     }
 
@@ -267,12 +267,12 @@ public class HttpRequestBuilderTest implements ClassTesting2<HttpRequestBuilder>
         final String value2 = "b2";
 
         final java.net.http.HttpRequest request = java.net.http.HttpRequest.newBuilder(URI)
-                .header(name1, value1)
-                .header(name2, value2)
-                .build();
+            .header(name1, value1)
+            .header(name2, value2)
+            .build();
         final HttpRequestBuilder b = HttpRequestBuilder.empty()
-                .header(name1, value1)
-                .header(name2, value2);
+            .header(name1, value1)
+            .header(name2, value2);
         assertEquals(request.headers().map(), b.headers);
     }
 
@@ -283,12 +283,12 @@ public class HttpRequestBuilderTest implements ClassTesting2<HttpRequestBuilder>
         final String value2 = "b1";
 
         final java.net.http.HttpRequest request = java.net.http.HttpRequest.newBuilder(URI)
-                .header(name1, value1)
-                .header(name1, value2)
-                .build();
+            .header(name1, value1)
+            .header(name1, value2)
+            .build();
         final HttpRequestBuilder b = HttpRequestBuilder.empty()
-                .header(name1, value1)
-                .header(name1, value2);
+            .header(name1, value1)
+            .header(name1, value2);
         assertEquals(request.headers().map(), b.headers);
     }
 
@@ -310,7 +310,7 @@ public class HttpRequestBuilderTest implements ClassTesting2<HttpRequestBuilder>
     }
 
     private void headersFails(final Class<? extends Throwable> expected,
-                              final String ...values) {
+                              final String... values) {
         assertThrows(expected, () -> java.net.http.HttpRequest.newBuilder(URI).headers(values));
         assertThrows(expected, () -> HttpRequestBuilder.empty().headers(values));
     }
@@ -321,10 +321,10 @@ public class HttpRequestBuilderTest implements ClassTesting2<HttpRequestBuilder>
         final String value = "value2";
 
         final java.net.http.HttpRequest request = java.net.http.HttpRequest.newBuilder(URI)
-                .headers(name, value)
-                .build();
+            .headers(name, value)
+            .build();
         final HttpRequestBuilder b = HttpRequestBuilder.empty()
-                .headers(name, value);
+            .headers(name, value);
         assertEquals(request.headers().map(), b.headers);
     }
 
@@ -334,10 +334,10 @@ public class HttpRequestBuilderTest implements ClassTesting2<HttpRequestBuilder>
         final String value = "value2";
 
         final java.net.http.HttpRequest request = java.net.http.HttpRequest.newBuilder(URI)
-                .headers(name, value)
-                .build();
+            .headers(name, value)
+            .build();
         final HttpRequestBuilder b = HttpRequestBuilder.empty()
-                .headers(name, value);
+            .headers(name, value);
         assertEquals(request.headers().map(), b.headers);
     }
 
@@ -350,11 +350,11 @@ public class HttpRequestBuilderTest implements ClassTesting2<HttpRequestBuilder>
         final String value2 = "b2";
 
         final java.net.http.HttpRequest request = java.net.http.HttpRequest.newBuilder(URI)
-                .headers(name1, value1, name2, value2)
-                .build();
+            .headers(name1, value1, name2, value2)
+            .build();
         final HttpRequestBuilder b = HttpRequestBuilder.empty()
-                .headers(name1, value1)
-                .headers(name2, value2);
+            .headers(name1, value1)
+            .headers(name2, value2);
         assertEquals(request.headers().map(), b.headers);
     }
 
@@ -365,10 +365,10 @@ public class HttpRequestBuilderTest implements ClassTesting2<HttpRequestBuilder>
         final String value2 = "b1";
 
         final java.net.http.HttpRequest request = java.net.http.HttpRequest.newBuilder(URI)
-                .headers(name1, value1, name1, value2)
-                .build();
+            .headers(name1, value1, name1, value2)
+            .build();
         final HttpRequestBuilder b = HttpRequestBuilder.empty()
-                .headers(name1, value1, name1, value2);
+            .headers(name1, value1, name1, value2);
         assertEquals(request.headers().map(), b.headers);
     }
 
@@ -397,10 +397,10 @@ public class HttpRequestBuilderTest implements ClassTesting2<HttpRequestBuilder>
         final String value = "value2";
 
         final java.net.http.HttpRequest request = java.net.http.HttpRequest.newBuilder(URI)
-                .setHeader(name, value)
-                .build();
+            .setHeader(name, value)
+            .build();
         final HttpRequestBuilder b = HttpRequestBuilder.empty()
-                .setHeader(name, value);
+            .setHeader(name, value);
         assertEquals(request.headers().map(), b.headers);
     }
 
@@ -410,10 +410,10 @@ public class HttpRequestBuilderTest implements ClassTesting2<HttpRequestBuilder>
         final String value = "value2";
 
         final java.net.http.HttpRequest request = java.net.http.HttpRequest.newBuilder(URI)
-                .setHeader(name, value)
-                .build();
+            .setHeader(name, value)
+            .build();
         final HttpRequestBuilder b = HttpRequestBuilder.empty()
-                .setHeader(name, value);
+            .setHeader(name, value);
         assertEquals(request.headers().map(), b.headers);
     }
 
@@ -426,12 +426,12 @@ public class HttpRequestBuilderTest implements ClassTesting2<HttpRequestBuilder>
         final String value2 = "b2";
 
         final java.net.http.HttpRequest request = java.net.http.HttpRequest.newBuilder(URI)
-                .setHeader(name1, value1)
-                .setHeader(name2, value2)
-                .build();
+            .setHeader(name1, value1)
+            .setHeader(name2, value2)
+            .build();
         final HttpRequestBuilder b = HttpRequestBuilder.empty()
-                .setHeader(name1, value1)
-                .setHeader(name2, value2);
+            .setHeader(name1, value1)
+            .setHeader(name2, value2);
         assertEquals(request.headers().map(), b.headers);
     }
 
@@ -442,12 +442,12 @@ public class HttpRequestBuilderTest implements ClassTesting2<HttpRequestBuilder>
         final String value2 = "b1";
 
         final java.net.http.HttpRequest request = java.net.http.HttpRequest.newBuilder(URI)
-                .setHeader(name1, value1)
-                .setHeader(name1, value2)
-                .build();
+            .setHeader(name1, value1)
+            .setHeader(name1, value2)
+            .build();
         final HttpRequestBuilder b = HttpRequestBuilder.empty()
-                .setHeader(name1, value1)
-                .setHeader(name1, value2);
+            .setHeader(name1, value1)
+            .setHeader(name1, value2);
         assertEquals(request.headers().map(), b.headers);
     }
 
@@ -456,47 +456,47 @@ public class HttpRequestBuilderTest implements ClassTesting2<HttpRequestBuilder>
     @Test
     public void testToString() {
         final HttpRequestBuilder b = HttpRequestBuilder.empty()
-                .POST(PUBLISHER)
-                .setHeader("Content-type", "text/plain")
-                .setHeader("Content-length", "1234")
-                .expectContinue(true)
-                .uri(URI)
-                .version(Version.HTTP_2);
+            .POST(PUBLISHER)
+            .setHeader("Content-type", "text/plain")
+            .setHeader("Content-length", "1234")
+            .expectContinue(true)
+            .uri(URI)
+            .version(Version.HTTP_2);
         this.toStringAndCheck(b.toString(), "POST http://example HTTP_2\n" +
-                "Content-length: 1234\n" +
-                "Content-type: text/plain\n" +
-                "\n" +
-                "expectContinue: true, Custom BodyPublisher");
+            "Content-length: 1234\n" +
+            "Content-type: text/plain\n" +
+            "\n" +
+            "expectContinue: true, Custom BodyPublisher");
     }
 
     @Test
     public void testToStringWithoutMethod() {
         final HttpRequestBuilder b = HttpRequestBuilder.empty()
-                .setHeader("Content-type", "text/plain")
-                .setHeader("Content-length", "1234")
-                .expectContinue(true)
-                .uri(URI)
-                .version(Version.HTTP_2);
+            .setHeader("Content-type", "text/plain")
+            .setHeader("Content-length", "1234")
+            .expectContinue(true)
+            .uri(URI)
+            .version(Version.HTTP_2);
         this.toStringAndCheck(b.toString(), "http://example HTTP_2\n" +
-                "Content-length: 1234\n" +
-                "Content-type: text/plain\n" +
-                "\n" +
-                "expectContinue: true");
+            "Content-length: 1234\n" +
+            "Content-type: text/plain\n" +
+            "\n" +
+            "expectContinue: true");
     }
 
     @Test
     public void testToStringWithoutVersion() {
         final HttpRequestBuilder b = HttpRequestBuilder.empty()
-                .POST(PUBLISHER)
-                .setHeader("Content-type", "text/plain")
-                .setHeader("Content-length", "1234")
-                .expectContinue(true)
-                .uri(URI);
+            .POST(PUBLISHER)
+            .setHeader("Content-type", "text/plain")
+            .setHeader("Content-length", "1234")
+            .expectContinue(true)
+            .uri(URI);
         this.toStringAndCheck(b.toString(), "POST http://example\n" +
-                "Content-length: 1234\n" +
-                "Content-type: text/plain\n" +
-                "\n" +
-                "expectContinue: true, Custom BodyPublisher");
+            "Content-length: 1234\n" +
+            "Content-type: text/plain\n" +
+            "\n" +
+            "expectContinue: true, Custom BodyPublisher");
     }
 
     // ClassTesting.....................................................................................................

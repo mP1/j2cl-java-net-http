@@ -61,12 +61,12 @@ final class HttpRequestBuilder implements HttpRequest.Builder {
     @Override
     public HttpRequestBuilder copy() {
         return new HttpRequestBuilder(this.method,
-                this.bodyPublisher,
-                this.expectContinue,
-                this.headers,
-                this.timeout,
-                this.uri,
-                this.version);
+            this.bodyPublisher,
+            this.expectContinue,
+            this.headers,
+            this.timeout,
+            this.uri,
+            this.version);
     }
 
     @Override
@@ -198,12 +198,12 @@ final class HttpRequestBuilder implements HttpRequest.Builder {
     @Override
     public HttpRequestAjax build() {
         return HttpRequestAjax.with(Optional.ofNullable(this.bodyPublisher),
-                this.expectContinue,
-                HttpHeaders.of(this.headers, KEEP_ALL_HEADERS),
-                this.method,
-                Optional.ofNullable(this.timeout),
-                this.uri,
-                Optional.ofNullable(this.version));
+            this.expectContinue,
+            HttpHeaders.of(this.headers, KEEP_ALL_HEADERS),
+            this.method,
+            Optional.ofNullable(this.timeout),
+            this.uri,
+            Optional.ofNullable(this.version));
     }
 
     private final static BiPredicate<String, String> KEEP_ALL_HEADERS = (n, v) -> true;
@@ -213,11 +213,11 @@ final class HttpRequestBuilder implements HttpRequest.Builder {
     @Override
     public String toString() {
         final ToStringBuilder b = ToStringBuilder.empty()
-                .disable(ToStringBuilderOption.QUOTE)
-                .valueSeparator(" ")
-                .value(this.method)
-                .value(this.uri)
-                .value(this.version);
+            .disable(ToStringBuilderOption.QUOTE)
+            .valueSeparator(" ")
+            .value(this.method)
+            .value(this.uri)
+            .value(this.version);
 
         if (null != this.method || null != this.uri || null != this.version) {
             b.append('\n');
@@ -225,18 +225,18 @@ final class HttpRequestBuilder implements HttpRequest.Builder {
 
         this.headers.forEach((h, v) -> {
             b.labelSeparator(": ")
-                    .separator("\n");
+                .separator("\n");
             for (final String value : v) {
                 b.label(h)
-                        .value(value);
+                    .value(value);
             }
         });
 
         return b.separator("\n\n")
-                .label("expectContinue").value(this.expectContinue)
-                .separator(", ")
-                .label("timeout").value(this.timeout)
-                .value(this.bodyPublisher)
-                .build();
+            .label("expectContinue").value(this.expectContinue)
+            .separator(", ")
+            .label("timeout").value(this.timeout)
+            .value(this.bodyPublisher)
+            .build();
     }
 }

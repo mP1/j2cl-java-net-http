@@ -73,93 +73,93 @@ public final class HttpRequestAjaxTest implements ClassTesting2<HttpRequestAjax>
     @Test
     public void testMissingOnlyUri() {
         this.check(java.net.http.HttpRequest.newBuilder(URI),
-                HttpRequest.newBuilder(URI));
+            HttpRequest.newBuilder(URI));
     }
 
     @Test
     public void testMissingMissingExpectContinue() {
         this.check(java.net.http.HttpRequest.newBuilder(URI)
-                        .header(HEADER, VALUE)
-                        .method(METHOD, PUBLISHER)
-                        .timeout(TIMEOUT)
-                        .version(JRE_VERSION),
-                HttpRequest.newBuilder(URI)
-                        .method(METHOD, PUBLISHER)
-                        .header(HEADER, VALUE)
-                        .timeout(TIMEOUT)
-                        .version(VERSION));
+                .header(HEADER, VALUE)
+                .method(METHOD, PUBLISHER)
+                .timeout(TIMEOUT)
+                .version(JRE_VERSION),
+            HttpRequest.newBuilder(URI)
+                .method(METHOD, PUBLISHER)
+                .header(HEADER, VALUE)
+                .timeout(TIMEOUT)
+                .version(VERSION));
     }
 
     @Test
     public void testMissingMissingMethod() {
         this.check(java.net.http.HttpRequest.newBuilder(URI)
-                        .expectContinue(EXPECT_CONTINUE)
-                        .header(HEADER, VALUE)
-                        .timeout(TIMEOUT)
-                        .version(JRE_VERSION),
-                HttpRequest.newBuilder(URI)
-                        .expectContinue(EXPECT_CONTINUE)
-                        .header(HEADER, VALUE)
-                        .timeout(TIMEOUT)
-                        .version(VERSION));
+                .expectContinue(EXPECT_CONTINUE)
+                .header(HEADER, VALUE)
+                .timeout(TIMEOUT)
+                .version(JRE_VERSION),
+            HttpRequest.newBuilder(URI)
+                .expectContinue(EXPECT_CONTINUE)
+                .header(HEADER, VALUE)
+                .timeout(TIMEOUT)
+                .version(VERSION));
     }
 
     @Test
     public void testMissingHeaders() {
         this.check(java.net.http.HttpRequest.newBuilder(URI)
-                        .expectContinue(EXPECT_CONTINUE)
-                        .method(METHOD, PUBLISHER)
-                        .timeout(TIMEOUT)
-                        .version(JRE_VERSION),
-                HttpRequest.newBuilder(URI)
-                        .expectContinue(EXPECT_CONTINUE)
-                        .method(METHOD, PUBLISHER)
-                        .timeout(TIMEOUT)
-                        .version(VERSION));
+                .expectContinue(EXPECT_CONTINUE)
+                .method(METHOD, PUBLISHER)
+                .timeout(TIMEOUT)
+                .version(JRE_VERSION),
+            HttpRequest.newBuilder(URI)
+                .expectContinue(EXPECT_CONTINUE)
+                .method(METHOD, PUBLISHER)
+                .timeout(TIMEOUT)
+                .version(VERSION));
     }
 
     @Test
     public void testMissingTimeout() {
         this.check(java.net.http.HttpRequest.newBuilder(URI)
-                        .expectContinue(EXPECT_CONTINUE)
-                        .header(HEADER, VALUE)
-                        .method(METHOD, PUBLISHER)
-                        .version(JRE_VERSION),
-                HttpRequest.newBuilder(URI)
-                        .expectContinue(EXPECT_CONTINUE)
-                        .header(HEADER, VALUE)
-                        .method(METHOD, PUBLISHER)
-                        .version(VERSION));
+                .expectContinue(EXPECT_CONTINUE)
+                .header(HEADER, VALUE)
+                .method(METHOD, PUBLISHER)
+                .version(JRE_VERSION),
+            HttpRequest.newBuilder(URI)
+                .expectContinue(EXPECT_CONTINUE)
+                .header(HEADER, VALUE)
+                .method(METHOD, PUBLISHER)
+                .version(VERSION));
     }
-    
+
     @Test
     public void testMissingMissingVersion() {
         this.check(java.net.http.HttpRequest.newBuilder(URI)
-                        .expectContinue(EXPECT_CONTINUE)
-                        .header(HEADER, VALUE)
-                        .method(METHOD, PUBLISHER)
-                        .timeout(TIMEOUT),
-                HttpRequest.newBuilder(URI)
-                        .expectContinue(EXPECT_CONTINUE)
-                        .header(HEADER, VALUE)
-                        .method(METHOD, PUBLISHER)
-                        .timeout(TIMEOUT));
+                .expectContinue(EXPECT_CONTINUE)
+                .header(HEADER, VALUE)
+                .method(METHOD, PUBLISHER)
+                .timeout(TIMEOUT),
+            HttpRequest.newBuilder(URI)
+                .expectContinue(EXPECT_CONTINUE)
+                .header(HEADER, VALUE)
+                .method(METHOD, PUBLISHER)
+                .timeout(TIMEOUT));
     }
 
     @Test
     public void testAll() {
         this.check(java.net.http.HttpRequest.newBuilder(URI)
-                        .expectContinue(EXPECT_CONTINUE)
-                        .header(HEADER, VALUE)
-                        .method(METHOD, PUBLISHER)
-                        .timeout(TIMEOUT)
-                        .version(JRE_VERSION),
-                HttpRequest.newBuilder(URI)
-                        .expectContinue(EXPECT_CONTINUE)
-                        .header(HEADER, VALUE)
-                        .method(METHOD, PUBLISHER)
-                        .timeout(TIMEOUT)
-                        .version(VERSION));
+                .expectContinue(EXPECT_CONTINUE)
+                .header(HEADER, VALUE)
+                .method(METHOD, PUBLISHER)
+                .timeout(TIMEOUT)
+                .version(JRE_VERSION),
+            HttpRequest.newBuilder(URI)
+                .expectContinue(EXPECT_CONTINUE)
+                .header(HEADER, VALUE)
+                .method(METHOD, PUBLISHER)
+                .timeout(TIMEOUT)
+                .version(VERSION));
     }
 
 
@@ -188,47 +188,47 @@ public final class HttpRequestAjaxTest implements ClassTesting2<HttpRequestAjax>
     @Test
     public void testToString() {
         final HttpRequestBuilder b = HttpRequestBuilder.empty()
-                .POST(PUBLISHER)
-                .setHeader("Content-type", "text/plain")
-                .setHeader("Content-length", "1234")
-                .expectContinue(true)
-                .uri(URI)
-                .version(Version.HTTP_2);
+            .POST(PUBLISHER)
+            .setHeader("Content-type", "text/plain")
+            .setHeader("Content-length", "1234")
+            .expectContinue(true)
+            .uri(URI)
+            .version(Version.HTTP_2);
         this.toStringAndCheck(b.build().toString(), "POST http://example HTTP_2\n" +
-                "Content-length: 1234\n" +
-                "Content-type: text/plain\n" +
-                "\n" +
-                "expectContinue: true, Custom BodyPublisher");
+            "Content-length: 1234\n" +
+            "Content-type: text/plain\n" +
+            "\n" +
+            "expectContinue: true, Custom BodyPublisher");
     }
 
     @Test
     public void testToStringWithoutMethod() {
         final HttpRequestBuilder b = HttpRequestBuilder.empty()
-                .setHeader("Content-type", "text/plain")
-                .setHeader("Content-length", "1234")
-                .expectContinue(true)
-                .uri(URI)
-                .version(Version.HTTP_2);
+            .setHeader("Content-type", "text/plain")
+            .setHeader("Content-length", "1234")
+            .expectContinue(true)
+            .uri(URI)
+            .version(Version.HTTP_2);
         this.toStringAndCheck(b.build().toString(), "GET http://example HTTP_2\n" +
-                "Content-length: 1234\n" +
-                "Content-type: text/plain\n" +
-                "\n" +
-                "expectContinue: true");
+            "Content-length: 1234\n" +
+            "Content-type: text/plain\n" +
+            "\n" +
+            "expectContinue: true");
     }
 
     @Test
     public void testToStringWithoutVersion() {
         final HttpRequestBuilder b = HttpRequestBuilder.empty()
-                .POST(PUBLISHER)
-                .setHeader("Content-type", "text/plain")
-                .setHeader("Content-length", "1234")
-                .expectContinue(true)
-                .uri(URI);
+            .POST(PUBLISHER)
+            .setHeader("Content-type", "text/plain")
+            .setHeader("Content-length", "1234")
+            .expectContinue(true)
+            .uri(URI);
         this.toStringAndCheck(b.build().toString(), "POST http://example\n" +
-                "Content-length: 1234\n" +
-                "Content-type: text/plain\n" +
-                "\n" +
-                "expectContinue: true, Custom BodyPublisher");
+            "Content-length: 1234\n" +
+            "Content-type: text/plain\n" +
+            "\n" +
+            "expectContinue: true, Custom BodyPublisher");
     }
 
     // ClassTesting.....................................................................................................
