@@ -97,7 +97,7 @@ public interface HttpResponse<T> {
     }
 
     interface BodySubscriber<T>
-            extends Flow.Subscriber<List<ByteBuffer>> {
+        extends Flow.Subscriber<List<ByteBuffer>> {
         CompletionStage<T> getBody();
     }
 

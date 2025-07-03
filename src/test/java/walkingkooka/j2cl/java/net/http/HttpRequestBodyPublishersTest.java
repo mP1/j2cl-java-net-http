@@ -48,7 +48,7 @@ public final class HttpRequestBodyPublishersTest extends JavaNetHttpTestCase<Bod
     @Test
     public void testNoBody() {
         this.check(java.net.http.HttpRequest.BodyPublishers.noBody(),
-                HttpRequest.BodyPublishers.noBody());
+            HttpRequest.BodyPublishers.noBody());
     }
 
     // ofString.........................................................................................................
@@ -83,7 +83,7 @@ public final class HttpRequestBodyPublishersTest extends JavaNetHttpTestCase<Bod
 
     private void ofStringAndCheck(final String body) {
         this.check(java.net.http.HttpRequest.BodyPublishers.ofString(body),
-                HttpRequest.BodyPublishers.ofString(body));
+            HttpRequest.BodyPublishers.ofString(body));
     }
 
     // ofString Charset..................................................................................................
@@ -130,7 +130,7 @@ public final class HttpRequestBodyPublishersTest extends JavaNetHttpTestCase<Bod
 
     private void ofStringCharsetAndCheck(final String body, final Charset charset) {
         this.check(java.net.http.HttpRequest.BodyPublishers.ofString(body, charset),
-                HttpRequest.BodyPublishers.ofString(body, charset));
+            HttpRequest.BodyPublishers.ofString(body, charset));
     }
 
     // helpers..........................................................................................................

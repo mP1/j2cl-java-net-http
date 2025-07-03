@@ -45,7 +45,7 @@ public final class HttpClientBuilderTest implements ClassTesting2<HttpClientBuil
         java.net.http.HttpClient.newBuilder().connectTimeout(duration);
 
         final HttpClientBuilder b = HttpClientBuilder.empty()
-                .connectTimeout(duration);
+            .connectTimeout(duration);
         assertSame(duration, b.connectTimeout, "connectTimeout");
     }
 
@@ -55,7 +55,7 @@ public final class HttpClientBuilderTest implements ClassTesting2<HttpClientBuil
         java.net.http.HttpClient.newBuilder().connectTimeout(duration);
 
         final HttpClientBuilder b = HttpClientBuilder.empty()
-                .connectTimeout(duration);
+            .connectTimeout(duration);
         assertSame(b, b.connectTimeout(duration));
         assertSame(duration, b.connectTimeout, "connectTimeout");
     }
@@ -66,7 +66,7 @@ public final class HttpClientBuilderTest implements ClassTesting2<HttpClientBuil
         java.net.http.HttpClient.newBuilder().connectTimeout(duration);
 
         final HttpClientBuilder b = HttpClientBuilder.empty()
-                .connectTimeout(Duration.ofMillis(200));
+            .connectTimeout(Duration.ofMillis(200));
         assertSame(b, b.connectTimeout(duration));
         assertSame(duration, b.connectTimeout, "connectTimeout");
     }
@@ -84,7 +84,7 @@ public final class HttpClientBuilderTest implements ClassTesting2<HttpClientBuil
         java.net.http.HttpClient.newBuilder().executor(executor);
 
         final HttpClientBuilder b = HttpClientBuilder.empty()
-                .executor(executor);
+            .executor(executor);
         assertSame(executor, b.executor, "executor");
     }
 
@@ -95,7 +95,7 @@ public final class HttpClientBuilderTest implements ClassTesting2<HttpClientBuil
         java.net.http.HttpClient.newBuilder().executor(executor);
 
         final HttpClientBuilder b = HttpClientBuilder.empty()
-                .executor(executor);
+            .executor(executor);
         assertSame(b, b.executor(executor));
         assertSame(executor, b.executor, "executor");
     }
@@ -112,7 +112,7 @@ public final class HttpClientBuilderTest implements ClassTesting2<HttpClientBuil
 
         final Redirect followRedirects = Redirect.ALWAYS;
         final HttpClientBuilder b = HttpClientBuilder.empty()
-                .followRedirects(followRedirects);
+            .followRedirects(followRedirects);
         assertSame(followRedirects, b.followRedirects, "followRedirects");
     }
 
@@ -122,7 +122,7 @@ public final class HttpClientBuilderTest implements ClassTesting2<HttpClientBuil
 
         final Redirect redirect = Redirect.ALWAYS;
         final HttpClientBuilder b = HttpClientBuilder.empty()
-                .followRedirects(redirect);
+            .followRedirects(redirect);
         assertSame(b, b.followRedirects(redirect));
         assertSame(redirect, b.followRedirects, "followRedirects");
     }
@@ -132,7 +132,7 @@ public final class HttpClientBuilderTest implements ClassTesting2<HttpClientBuil
         java.net.http.HttpClient.newBuilder().followRedirects(java.net.http.HttpClient.Redirect.ALWAYS);
 
         final HttpClientBuilder b = HttpClientBuilder.empty()
-                .followRedirects(Redirect.ALWAYS);
+            .followRedirects(Redirect.ALWAYS);
         final Redirect redirect = Redirect.NORMAL;
         assertSame(b, b.followRedirects(redirect));
         assertSame(redirect, b.followRedirects, "followRedirects");
@@ -169,7 +169,7 @@ public final class HttpClientBuilderTest implements ClassTesting2<HttpClientBuil
         java.net.http.HttpClient.newBuilder().priority(priority);
 
         final HttpClientBuilder b = HttpClientBuilder.empty()
-                .priority(priority);
+            .priority(priority);
         assertSame(b, b.priority(priority));
     }
 
@@ -201,7 +201,7 @@ public final class HttpClientBuilderTest implements ClassTesting2<HttpClientBuil
 
         final Version version = Version.HTTP_1_1;
         final HttpClientBuilder b = HttpClientBuilder.empty()
-                .version(version);
+            .version(version);
         assertSame(version, b.version, "version");
     }
 
@@ -211,7 +211,7 @@ public final class HttpClientBuilderTest implements ClassTesting2<HttpClientBuil
 
         final Version version = Version.HTTP_2;
         final HttpClientBuilder b = HttpClientBuilder.empty()
-                .version(version);
+            .version(version);
         assertSame(version, b.version, "version");
     }
 
@@ -221,7 +221,7 @@ public final class HttpClientBuilderTest implements ClassTesting2<HttpClientBuil
 
         final Version version = Version.HTTP_1_1;
         final HttpClientBuilder b = HttpClientBuilder.empty()
-                .version(version);
+            .version(version);
         assertSame(b, b.version(version));
         assertSame(version, b.version, "version");
     }
@@ -231,7 +231,7 @@ public final class HttpClientBuilderTest implements ClassTesting2<HttpClientBuil
         java.net.http.HttpClient.newBuilder().version(java.net.http.HttpClient.Version.HTTP_1_1);
 
         final HttpClientBuilder b = HttpClientBuilder.empty()
-                .version(Version.HTTP_2);
+            .version(Version.HTTP_2);
         final Version version = Version.HTTP_2;
         assertSame(b, b.version(version));
         assertSame(version, b.version, "version");
@@ -316,12 +316,12 @@ public final class HttpClientBuilderTest implements ClassTesting2<HttpClientBuil
             }
 
             final Redirect followRedirectNeverNull = null == followRedirects ?
-                    Redirect.NEVER :
-                    followRedirects;
+                Redirect.NEVER :
+                followRedirects;
 
             final Version versionNeverNull = null == version ?
-                    Version.HTTP_2 :
-                    version;
+                Version.HTTP_2 :
+                version;
 
             {
                 final HttpClientAjax client = (HttpClientAjax) b.build();

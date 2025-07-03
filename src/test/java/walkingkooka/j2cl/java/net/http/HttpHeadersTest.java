@@ -22,7 +22,6 @@ import walkingkooka.HashCodeEqualsDefinedTesting2;
 import walkingkooka.ToStringTesting;
 import walkingkooka.collect.list.Lists;
 import walkingkooka.collect.map.Maps;
-import walkingkooka.reflect.ClassTesting2;
 import walkingkooka.reflect.JavaVisibility;
 
 import java.util.List;
@@ -36,8 +35,8 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class HttpHeadersTest extends JavaNetHttpTestCase<HttpHeaders>
-        implements HashCodeEqualsDefinedTesting2<HttpHeaders>,
-        ToStringTesting<HttpHeaders> {
+    implements HashCodeEqualsDefinedTesting2<HttpHeaders>,
+    ToStringTesting<HttpHeaders> {
 
     private final static String HEADER = "Header1";
     private final static String VALUE = "Value2";
@@ -99,7 +98,7 @@ public final class HttpHeadersTest extends JavaNetHttpTestCase<HttpHeaders>
     @Test
     public void testOfManyValuesSomeFiltered() {
         this.check(Maps.of(HEADER, Lists.of(VALUE), "Header2b", Lists.of("value2a", "value2b")),
-                (h, n) -> h.equals(HEADER));
+            (h, n) -> h.equals(HEADER));
     }
 
     private HttpHeaders check(final Map<String, List<String>> source,
@@ -119,8 +118,8 @@ public final class HttpHeadersTest extends JavaNetHttpTestCase<HttpHeaders>
                 final String name = nameAndValue.getKey();
 
                 assertEquals(jre.firstValue(name),
-                        emul.firstValue(name),
-                        () -> "firstValue of " + name + " in " + source);
+                    emul.firstValue(name),
+                    () -> "firstValue of " + name + " in " + source);
 
                 OptionalLong asLong = null;
                 try {
@@ -130,17 +129,17 @@ public final class HttpHeadersTest extends JavaNetHttpTestCase<HttpHeaders>
                 }
                 if (null != asLong) {
                     assertEquals(asLong,
-                            emul.firstValueAsLong(name),
-                            () -> "firstValueAsLong of " + name + " in " + source);
+                        emul.firstValueAsLong(name),
+                        () -> "firstValueAsLong of " + name + " in " + source);
                 }
 
                 assertEquals(jre.allValues(name),
-                        emul.allValues(name),
-                        () -> "allValues of " + name + " in " + source);
+                    emul.allValues(name),
+                    () -> "allValues of " + name + " in " + source);
 
                 assertEquals(jre.map(),
-                        emul.map(),
-                        () -> "map of " + source);
+                    emul.map(),
+                    () -> "map of " + source);
 
                 final java.net.http.HttpHeaders jre2 = jre;
                 assertThrows(UnsupportedOperationException.class, () -> jre2.map().put("a", Lists.of("1")));

@@ -21,9 +21,6 @@ import walkingkooka.j2cl.java.net.http.HttpResponse.BodySubscriber;
 import walkingkooka.j2cl.java.net.http.HttpResponse.BodySubscribers;
 import walkingkooka.j2cl.java.net.http.HttpResponse.ResponseInfo;
 
-import java.nio.charset.Charset;
-import java.util.Objects;
-
 final class HttpResponseBodyHandlerDiscarding extends HttpResponseBodyHandler<Void> {
 
     /**

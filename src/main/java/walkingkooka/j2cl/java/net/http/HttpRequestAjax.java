@@ -39,12 +39,12 @@ final class HttpRequestAjax implements HttpRequest {
         }
 
         return new HttpRequestAjax(bodyPublisher,
-                expectContinue,
-                headers,
-                null == method ? "GET" : method, // default METHOD is GET
-                timeout,
-                uri,
-                version);
+            expectContinue,
+            headers,
+            null == method ? "GET" : method, // default METHOD is GET
+            timeout,
+            uri,
+            version);
     }
 
     private HttpRequestAjax(final Optional<BodyPublisher> bodyPublisher,
@@ -117,11 +117,11 @@ final class HttpRequestAjax implements HttpRequest {
     @Override
     public String toString() {
         final ToStringBuilder b = ToStringBuilder.empty()
-                .disable(ToStringBuilderOption.QUOTE)
-                .valueSeparator(" ")
-                .value(this.method)
-                .value(this.uri)
-                .value(this.version);
+            .disable(ToStringBuilderOption.QUOTE)
+            .valueSeparator(" ")
+            .value(this.method)
+            .value(this.uri)
+            .value(this.version);
 
         if (null != this.method || null != this.uri || null != this.version) {
             b.append('\n');
@@ -130,11 +130,11 @@ final class HttpRequestAjax implements HttpRequest {
         b.value(this.headers);
 
         return b.separator("\n")
-                .labelSeparator(": ")
-                .label("expectContinue").value(this.expectContinue)
-                .separator(", ")
-                .label("timeout").value(this.timeout)
-                .value(this.bodyPublisher)
-                .build();
+            .labelSeparator(": ")
+            .label("expectContinue").value(this.expectContinue)
+            .separator(", ")
+            .label("timeout").value(this.timeout)
+            .value(this.bodyPublisher)
+            .build();
     }
 }

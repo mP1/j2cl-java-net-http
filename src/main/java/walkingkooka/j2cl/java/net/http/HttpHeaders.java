@@ -68,8 +68,8 @@ public final class HttpHeaders {
         }
 
         return nameToValues.isEmpty() ?
-                EMPTY :
-                new HttpHeaders(Maps.readOnly(nameToValues));
+            EMPTY :
+            new HttpHeaders(Maps.readOnly(nameToValues));
     }
 
     private final static HttpHeaders EMPTY = new HttpHeaders(Maps.empty());
@@ -88,15 +88,15 @@ public final class HttpHeaders {
 
     public Optional<String> firstValue(String name) {
         return allValues(name)
-                .stream()
-                .findFirst();
+            .stream()
+            .findFirst();
     }
 
     public OptionalLong firstValueAsLong(String name) {
         return allValues(name)
-                .stream()
-                .mapToLong(Long::valueOf)
-                .findFirst();
+            .stream()
+            .mapToLong(Long::valueOf)
+            .findFirst();
     }
 
     public Map<String, List<String>> map() {
@@ -124,15 +124,15 @@ public final class HttpHeaders {
     @Override
     public String toString() {
         final ToStringBuilder b = ToStringBuilder.empty()
-                .disable(ToStringBuilderOption.QUOTE)
-                .labelSeparator(": ");
+            .disable(ToStringBuilderOption.QUOTE)
+            .labelSeparator(": ");
 
         for (final Entry<String, List<String>> nameAndValue : this.nameToValues.entrySet()) {
             final String name = nameAndValue.getKey();
             for (final String value : nameAndValue.getValue()) {
                 b.label(name)
-                        .value(value)
-                        .append('\n');
+                    .value(value)
+                    .append('\n');
             }
         }
 
